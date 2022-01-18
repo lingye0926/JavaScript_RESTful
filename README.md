@@ -3,7 +3,7 @@ npm init -y: to initiallize the project
 npm i express ejs mongoose : to add package to the project
 
 ## routine to setup a server
-
+```javascript
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -32,6 +32,8 @@ const Article = mongoose.model("Article",articleSchema);
 app.listen(3000,function(){
     console.log("Server started on port 3000");
 });
+
+```
 ### check port status on terminal
 lsof -i tcp:3000
 ### make sure you open mongo service before start the connection use nodemon 
@@ -42,6 +44,8 @@ brew services start mongodb-community
 
 
 ### use express route parameters to captrue values as part of request route query string
+
+```javascript
 app.route("/articles/:articleTitle")//this articleTitle will be call by eq.params.articleTitle
 .get(function(req,res){  
     Article.findOne({title:req.params.articleTitle},function(err,foundArticle){
@@ -52,3 +56,4 @@ app.route("/articles/:articleTitle")//this articleTitle will be call by eq.param
         }
     })
 })
+```
